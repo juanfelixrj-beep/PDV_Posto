@@ -38,6 +38,9 @@ manipulação de DOM e uso do `localStorage`.
 
 O sistema abrirá diretamente no navegador.
 
+Ou use o link de teste:
+!(Link de Teste)[https://pdv-posto.onrender.com]
+
 ## Como usar
 
 1.  Digite o nome do produto.
@@ -55,6 +58,11 @@ Este projeto foi criado para fins de estudo, com foco em:
 -   Estruturação de lógica de carrinho de compras
 -   Persistência de dados no navegador
 -   Organização de código em módulos
+
+## Screenshots
+
+![Interface do sistema de PDV](preview/image.png)
+![PopUp de pagamento](preview/imag2.png)
 
 ## Possíveis melhorias futuras
 
