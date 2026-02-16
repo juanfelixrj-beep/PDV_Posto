@@ -62,7 +62,7 @@ Este projeto foi criado para fins de estudo, com foco em:
 ## Screenshots
 
 ![Interface do sistema de PDV](preview/image.png)
-![PopUp de pagamento](preview/imag2.png)
+![PopUp de pagamento](preview/image2.png)
 
 ## Possíveis melhorias futuras
 
