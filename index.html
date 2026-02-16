@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDV Simples</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="titulo">Sistema de PDV - Posto de Combustivel</h1>
+        <div class="content">
+            <div class="produtos">
+                 <h1>Produtos</h1>
+                 <select name="" id="product">
+                    <option value="Gasolina">Gasolina</option>
+                    <option value="Etanol">Etanol</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="GNV">GNV</option>
+                 </select>
+                 <input type="number" id="price" placeholder="R$/L" step="0.01" min="0">
+                 <input type="number" id="qnt" placeholder="Litros:" step="1">
+                 <button id="add">Adicionar produto</button>
+            </div>
+            <div class="carrinho">
+                <h1>Carrinho</h1>
+                <div class="itens">
+
+                </div>
+                <button id="check">Finalizar venda</button>
+            </div>
+        </div>    
+    </div>
+    <div class="popup-overlay" id="popup">
+    <div class="popup">
+        <h2>Finalizar pagamento</h2>
+
+        <p>Total: <strong id="totalValue">R$0,00</strong></p>
+
+        <label>Forma de pagamento:</label>
+        <select id="payment">
+            <option>Dinheiro</option>
+            <option>Cartão</option>
+            <option>Pix</option>
+        </select>
+
+        <div class="popup-buttons">
+            <button id="confirm">Confirmar</button>
+            <button id="cancel">Cancelar</button>
+        </div>
+    </div>
+</div>
+</body>
+<script type="module" src="script.js"></script>
+</html>
