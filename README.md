@@ -39,7 +39,7 @@ manipulação de DOM e uso do `localStorage`.
 O sistema abrirá diretamente no navegador.
 
 Ou use o link de teste:
-!(Link de Teste)[https://pdv-posto.onrender.com]
+https://pdv-posto.onrender.com
 
 ## Como usar
 
