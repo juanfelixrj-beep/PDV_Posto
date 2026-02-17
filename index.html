@@ -17,13 +17,15 @@
             <div class="produtos">
                  <h1>Produtos</h1>
                  <select name="" id="product">
-                    <option value="Gasolina">Gasolina</option>
+                    <option value="Gasolina Aditivada">Gasolina Aditivada</option>
+                    <option value="Gasolina Comum">Gasolina Comum</option>
                     <option value="Etanol">Etanol</option>
                     <option value="Diesel">Diesel</option>
+                    <option value="DieselS10">Diesel S10</option>
                     <option value="GNV">GNV</option>
                  </select>
-                 <input type="number" id="price" placeholder="R$/L" step="0.01" min="0">
-                 <input type="number" id="qnt" placeholder="Litros:" step="1">
+                 <p id="price">R$0,00</p>
+                 <input type="number" id="qnt" placeholder="Quantidade:" step="1">
                  <button id="add">Adicionar produto</button>
             </div>
             <div class="carrinho">
@@ -31,7 +33,10 @@
                 <div class="itens">
 
                 </div>
-                <button id="check">Finalizar venda</button>
+                <div class="info">
+                    <h3 id="totalTexto">Total:</h3>
+                    <button id="check">Finalizar venda</button>
+                </div>
             </div>
         </div>    
     </div>

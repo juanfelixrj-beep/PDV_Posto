@@ -4,36 +4,84 @@ const add_product = document.querySelector("#add")
 const check = document.querySelector("#check")
 const itens = document.querySelector(".itens")
 const nameInput = document.querySelector("#product")
-const priceInput = document.querySelector("#price")
+const priceLbl = document.querySelector("#price")
 const qntInput = document.querySelector("#qnt")
-
+const totalTexto = document.querySelector("#totalTexto")
 const popup_overlay = document.querySelector(".popup-overlay")
 const cancel = document.querySelector("#cancel")
 const total = document.querySelector("#totalValue")
 const confirm = document.querySelector("#confirm")
 
 let products = []
+let price = 0
 
 renderProducts()
 
-add_product.addEventListener("click", ()=>{
-    if(nameInput.value == "" || priceInput.value == "" || qntInput.value == ""){
+
+let totalValue = 0
+
+products.forEach((t) => {
+    totalValue += t.price * t.qnt
+})
+
+totalTexto.textContent = `Total: R$${totalValue.toFixed(2)}`
+
+
+const fuel = nameInput.value
+if (fuel == "Gasolina Aditivada") {
+    price = 6.68
+    priceLbl.textContent = `R$${price.toFixed(2)}/L`
+}
+
+add_product.addEventListener("click", () => {
+    if (nameInput.value == "" || qntInput.value == "") {
         alert("Preencha todos os campos")
         return
     }
 
     products.push(new Product(
         nameInput.value,
-        parseFloat(priceInput.value),
+        parseFloat(price),
         parseInt(qntInput.value)
     ))
 
     alert("Produto salvo com sucesso")
     localStorage.setItem("key", JSON.stringify(products))
     renderProducts()
+
+    let totalValue = 0
+
+    products.forEach((t) => {
+        totalValue += t.price * t.qnt
+    })
+
+    totalTexto.textContent = `Total: R$${totalValue.toFixed(2)}`
 })
 
-confirm.addEventListener("click", ()=>{
+nameInput.addEventListener("input", () => {
+    const fuel = nameInput.value
+    if (fuel == "Gasolina Aditivada") {
+        price = 6.68
+        priceLbl.textContent = `R$${price.toFixed(2)}/L`
+    } else if (fuel == "Gasolina Comum") {
+        price = 6.54
+        priceLbl.textContent = `R$${price.toFixed(2)}/L`
+    } else if (fuel == "Etanol") {
+        price = 4.85
+        priceLbl.textContent = `R$${price.toFixed(2)}/L`
+    } else if (fuel == "Diesel") {
+        price = 5.87
+        priceLbl.textContent = `R$${price.toFixed(2)}/L`
+    } else if (fuel == "DieselS10") {
+        price = 5.93
+        priceLbl.textContent = `R$${price.toFixed(2)}/L`
+    } else if (fuel == "GNV") {
+        price = 4.61
+        priceLbl.textContent = `R$${price.toFixed(2)}/m³`
+    }
+})
+
+confirm.addEventListener("click", () => {
     alert("Pagamento concluido com sucesso!")
     products = []
     localStorage.setItem("key", JSON.stringify(products))
@@ -41,14 +89,14 @@ confirm.addEventListener("click", ()=>{
     popup_overlay.style.display = "none"
 })
 
-check.addEventListener("click", ()=>{
-    if(products.length == 0){
+check.addEventListener("click", () => {
+    if (products.length == 0) {
         alert("Adicione produtos ao carrinho")
         return
     }
     let totalValue = 0
 
-    products.forEach((t)=>{
+    products.forEach((t) => {
         totalValue += t.price * t.qnt
     })
 
@@ -58,7 +106,7 @@ check.addEventListener("click", ()=>{
 
 
 
-cancel.addEventListener("click", ()=>{
+cancel.addEventListener("click", () => {
     popup_overlay.style.display = "none"
 })
 
@@ -69,10 +117,10 @@ function renderProducts() {
     products = raw ? JSON.parse(raw) : []
     products.map(o => new Product(o.name, o.price, o.qnt))
 
-    products.forEach((element)=>{
+    products.forEach((element) => {
         const header = document.createElement("div")
         header.classList.add("item-header")
-    
+
         const fieldset = document.createElement("fieldset")
         fieldset.classList.add("appear")
 
@@ -85,7 +133,7 @@ function renderProducts() {
 
         const deleteBtn = document.createElement("button")
         deleteBtn.innerHTML = '<i class="bi bi-trash-fill"></i>'
-        deleteBtn.addEventListener("click", ()=>{
+        deleteBtn.addEventListener("click", () => {
             products.splice(element._index, 1)
             localStorage.setItem("key", JSON.stringify(products))
             renderProducts()
@@ -99,4 +147,11 @@ function renderProducts() {
 
         itens.append(fieldset)
     })
+    let totalValue = 0
+
+    products.forEach((t) => {
+        totalValue += t.price * t.qnt
+    })
+
+    totalTexto.textContent = `Total: R$${totalValue.toFixed(2)}`
 }
